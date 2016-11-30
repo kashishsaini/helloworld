@@ -1,0 +1,12 @@
+prefix=/usr/local/mpeg-dash
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include
+
+Name: gpac
+Description: GPAC Multimedia Framework
+URL: http://gpac.sourceforge.net
+Version:0.6.2-DEV
+Cflags: -I${prefix}/include/gpac
+Libs: -L${libdir} -lgpac
+Libs.private: -lgpac_static -lm -L/usr/local/mpeg-dash/lib -lGL -lGLU -lX11  -lz -lssl -lcrypto -lmozjs185 -lplds4 -lplc4 -lnspr4   -ljpeg -lpng -lpthread -ldl

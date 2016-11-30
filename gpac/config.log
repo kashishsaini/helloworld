@@ -1,0 +1,644 @@
+Logs for GPAC configure --extra-ldflags=-Wl,-rpath,/usr/local/mpeg-dash/lib/ --extra-cflags=-I/usr/local/mpeg-dash/include/ --prefix=/usr/local/mpeg-dash
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.4-2ubuntu1~14.04.3' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
+*** CC/CXX Test Failed (args ) : 
+
+/tmp/ccpHrk9u.o: In function `main':
+gpac-conf--10474-.c:(.text.startup+0xe): undefined reference to `dlopen'
+collect2: error: ld returned 1 exit status
+
+Source was: 
+#include <dlfcn.h>
+int main( void ) { dlopen("foo", 0); return 0; }
+
+
+*** CC/CXX Test Failed (args -DSPIDERMONKEY_NEW_API -I/usr/include/nspr -I/usr/include/js -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -lmozjs185 -lplds4 -lplc4 -lnspr4) : 
+
+/tmp/gpac-conf--10474-.c: In function ‘main’:
+/tmp/gpac-conf--10474-.c:2:1: warning: passing argument 1 of ‘JS_GetPrivate’ from incompatible pointer type [enabled by default]
+ int main( void ) { JSObject *obj; JS_GetPrivate(obj); return 0; }
+ ^
+In file included from /tmp/gpac-conf--10474-.c:1:0:
+/usr/include/js/jsapi.h:2134:1: note: expected ‘struct JSContext *’ but argument is of type ‘struct JSObject *’
+ JS_GetPrivate(JSContext *cx, JSObject *obj);
+ ^
+/tmp/gpac-conf--10474-.c:2:1: error: too few arguments to function ‘JS_GetPrivate’
+ int main( void ) { JSObject *obj; JS_GetPrivate(obj); return 0; }
+ ^
+In file included from /tmp/gpac-conf--10474-.c:1:0:
+/usr/include/js/jsapi.h:2134:1: note: declared here
+ JS_GetPrivate(JSContext *cx, JSObject *obj);
+ ^
+
+Source was: 
+#include <jsapi.h>
+int main( void ) { JSObject *obj; JS_GetPrivate(obj); return 0; }
+
+
+*** CC/CXX Test Failed (args -DSPIDERMONKEY_NEW_API -I/usr/include/nspr -I/usr/include/js -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -lmozjs185 -lplds4 -lplc4 -lnspr4) : 
+
+/tmp/gpac-conf--10474-.c: In function ‘main’:
+/tmp/gpac-conf--10474-.c:2:1: warning: implicit declaration of function ‘JS_SetRuntimeThread’ [-Wimplicit-function-declaration]
+ int main( void ) { JSContext *cx=NULL; JS_SetRuntimeThread(cx); return 0;}
+ ^
+/tmp/ccGDTsEE.o: In function `main':
+gpac-conf--10474-.c:(.text.startup+0x9): undefined reference to `JS_SetRuntimeThread'
+collect2: error: ld returned 1 exit status
+
+Source was: 
+#include <jsapi.h>
+int main( void ) { JSContext *cx=NULL; JS_SetRuntimeThread(cx); return 0;}
+
+
+*** CC/CXX Test Failed (args -o /tmp/gpac-conf--10474-.o /tmp/gpac-conf--10474-.c -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -Lextra_lib/lib/gcc -lPlatinum -lPltMediaServer -lPltMediaConnect -lPltMediaRenderer -lNeptune -lZlib -lpthread) : 
+
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:44:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:44:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <class T>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:55:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <class T>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:69:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T, typename P>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:87:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T, typename P>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:100:1: error: unknown type name ‘class’
+ class NPT_UntilResultEquals
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:101:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:126:1: error: unknown type name ‘class’
+ class NPT_UntilResultNotEquals
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:127:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:149:1: error: unknown type name ‘class’
+ class NPT_PropertyValue
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:150:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:40:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:39,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:51:1: error: unknown type name ‘class’
+ class NPT_InterfaceId
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:52:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:67:1: error: unknown type name ‘class’
+ class NPT_Polymorphic
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:68:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:81:1: error: unknown type name ‘class’
+ class NPT_Interruptible
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:82:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:94:1: error: unknown type name ‘class’
+ class NPT_Configurable
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:95:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:39:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:64:1: error: unknown type name ‘class’
+ class NPT_MutexInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:65:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:76:1: error: unknown type name ‘class’
+ class NPT_Mutex : public NPT_MutexInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:76:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_Mutex : public NPT_MutexInterface
+                 ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:93:1: error: unknown type name ‘class’
+ class NPT_AutoLock
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:94:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:112:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T> 
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:121:1: error: unknown type name ‘class’
+ class NPT_SingletonLock
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:122:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:135:1: error: unknown type name ‘class’
+ class NPT_SharedVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:136:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:149:1: error: unknown type name ‘class’
+ class NPT_SharedVariable : public NPT_SharedVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:149:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_SharedVariable : public NPT_SharedVariableInterface
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:176:1: error: unknown type name ‘class’
+ class NPT_AtomicVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:177:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:190:1: error: unknown type name ‘class’
+ class NPT_AtomicVariable : public NPT_AtomicVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:190:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_AtomicVariable : public NPT_AtomicVariableInterface
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:209:1: error: unknown type name ‘class’
+ class NPT_Runnable
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:210:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:219:1: error: unknown type name ‘class’
+ class NPT_ThreadInterface: public NPT_Runnable, public NPT_Interruptible
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:219:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_ThreadInterface: public NPT_Runnable, public NPT_Interruptible
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:233:1: error: unknown type name ‘class’
+ class NPT_Thread : public NPT_ThreadInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:233:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_Thread : public NPT_ThreadInterface
+                  ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:278:1: error: unknown type name ‘class’
+ class NPT_ThreadCallbackReceiver
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:279:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:288:1: error: unknown type name ‘class’
+ class NPT_ThreadCallbackSlot
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:289:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:44:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T>
+          ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStreams.h:42:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:49,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptDataBuffer.h:44:1: error: unknown type name ‘class’
+ class NPT_DataBuffer 
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptDataBuffer.h:45:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStreams.h:43:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:49,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStrings.h:40:15: fatal error: new: No such file or directory
+ #include <new>
+               ^
+compilation terminated.
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:44:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:44:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <class T>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:55:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <class T>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:69:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T, typename P>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:87:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T, typename P>
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:100:1: error: unknown type name ‘class’
+ class NPT_UntilResultEquals
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:101:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:126:1: error: unknown type name ‘class’
+ class NPT_UntilResultNotEquals
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:127:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:149:1: error: unknown type name ‘class’
+ class NPT_PropertyValue
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptCommon.h:150:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:40:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:39,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:51:1: error: unknown type name ‘class’
+ class NPT_InterfaceId
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:52:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:67:1: error: unknown type name ‘class’
+ class NPT_Polymorphic
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:68:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:81:1: error: unknown type name ‘class’
+ class NPT_Interruptible
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:82:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:94:1: error: unknown type name ‘class’
+ class NPT_Configurable
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptInterfaces.h:95:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:39:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:64:1: error: unknown type name ‘class’
+ class NPT_MutexInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:65:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:76:1: error: unknown type name ‘class’
+ class NPT_Mutex : public NPT_MutexInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:76:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_Mutex : public NPT_MutexInterface
+                 ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:93:1: error: unknown type name ‘class’
+ class NPT_AutoLock
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:94:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:112:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T> 
+          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:121:1: error: unknown type name ‘class’
+ class NPT_SingletonLock
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:122:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:135:1: error: unknown type name ‘class’
+ class NPT_SharedVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:136:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:149:1: error: unknown type name ‘class’
+ class NPT_SharedVariable : public NPT_SharedVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:149:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_SharedVariable : public NPT_SharedVariableInterface
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:176:1: error: unknown type name ‘class’
+ class NPT_AtomicVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:177:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:190:1: error: unknown type name ‘class’
+ class NPT_AtomicVariable : public NPT_AtomicVariableInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:190:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_AtomicVariable : public NPT_AtomicVariableInterface
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:209:1: error: unknown type name ‘class’
+ class NPT_Runnable
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:210:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:219:1: error: unknown type name ‘class’
+ class NPT_ThreadInterface: public NPT_Runnable, public NPT_Interruptible
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:219:26: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_ThreadInterface: public NPT_Runnable, public NPT_Interruptible
+                          ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:233:1: error: unknown type name ‘class’
+ class NPT_Thread : public NPT_ThreadInterface
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:233:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘:’ token
+ class NPT_Thread : public NPT_ThreadInterface
+                  ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:278:1: error: unknown type name ‘class’
+ class NPT_ThreadCallbackReceiver
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:279:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:288:1: error: unknown type name ‘class’
+ class NPT_ThreadCallbackSlot
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptThreads.h:289:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:48:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptReferences.h:44:10: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+ template <typename T>
+          ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStreams.h:42:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:49,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptDataBuffer.h:44:1: error: unknown type name ‘class’
+ class NPT_DataBuffer 
+ ^
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptDataBuffer.h:45:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ {
+ ^
+In file included from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStreams.h:43:0,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Neptune.h:49,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltTaskManager.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/PltUPnP.h:45,
+                 from /home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/Platinum.h:72,
+                 from /tmp/gpac-conf--10474-.c:1:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/platinum/NptStrings.h:40:15: fatal error: new: No such file or directory
+ #include <new>
+               ^
+compilation terminated.
+
+Source was: 
+#include <Platinum.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -o /tmp/gpac-conf--10474-.o /tmp/gpac-conf--10474-.c -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -lavcap) : 
+
+/tmp/gpac-conf--10474-.c:1:25: fatal error: avcap/avcap.h: No such file or directory
+ #include <avcap/avcap.h>
+                         ^
+compilation terminated.
+/tmp/gpac-conf--10474-.c:1:25: fatal error: avcap/avcap.h: No such file or directory
+ #include <avcap/avcap.h>
+                         ^
+compilation terminated.
+
+Source was: 
+#include <avcap/avcap.h>
+using namespace avcap;
+int main( void ) { 
+  const DeviceCollector::DeviceList& dl = DEVICE_COLLECTOR::instance().getDeviceList();
+  DeviceDescriptor* dd = 0;
+  for (DeviceCollector::DeviceList::const_iterator i = dl.begin(); i != dl.end(); i++) {
+    dd = *i;
+    std::cout << dd->getName().c_str() << "\n";
+  }
+  return 0; 
+}
+
+
+*** CC/CXX Test Failed (args -o /tmp/gpac-conf--10474-.o /tmp/gpac-conf--10474-.c -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/avcap/linux -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -Lextra_lib/lib/gcc -lavcap -lpthread) : 
+
+In file included from /tmp/gpac-conf--10474-.c:1:0:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/avcap/avcap.h:29:27: fatal error: avcap-config.h: No such file or directory
+ # include "avcap-config.h"
+                           ^
+compilation terminated.
+In file included from /tmp/gpac-conf--10474-.c:1:0:
+/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/avcap/avcap.h:29:27: fatal error: avcap-config.h: No such file or directory
+ # include "avcap-config.h"
+                           ^
+compilation terminated.
+
+Source was: 
+#include <avcap/avcap.h>
+using namespace avcap;
+int main( void ) { 
+  const DeviceCollector::DeviceList& dl = DEVICE_COLLECTOR::instance().getDeviceList();
+  DeviceDescriptor* dd = 0;
+  for (DeviceCollector::DeviceList::const_iterator i = dl.begin(); i != dl.end(); i++) {
+    dd = *i;
+    std::cout << dd->getName().c_str() << "\n";
+  }
+  return 0; 
+}
+
+
+*** CC/CXX Test Failed (args -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -lOpenSVCDec) : 
+
+/tmp/gpac-conf--10474-.c:1:48: fatal error: OpenSVCDecoder/SVCDecoder_ietr_api.h: No such file or directory
+ #include <OpenSVCDecoder/SVCDecoder_ietr_api.h>
+                                                ^
+compilation terminated.
+
+Source was: 
+#include <OpenSVCDecoder/SVCDecoder_ietr_api.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -Lextra_lib/lib/gcc -lOpenSVCDec) : 
+
+/usr/bin/ld: cannot find -lOpenSVCDec
+collect2: error: ld returned 1 exit status
+
+Source was: 
+#include <OpenSVCDecoder/SVCDecoder_ietr_api.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -I/usr/include -I/usr/local/include -L/usr/lib -L/usr/local/lib -lLibOpenHevcWrapper -lm -lpthread -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c:2:29: fatal error: openHevcWrapper.h: No such file or directory
+ #include <openHevcWrapper.h>
+                             ^
+compilation terminated.
+
+Source was: 
+#include <stdio.h>
+#include <openHevcWrapper.h>
+int main( void ) { libOpenHevcInit(1, 1); return 0; }
+
+
+*** CC/CXX Test Failed (args -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include -lLibOpenHevcWrapper -lm -lpthread -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -Lextra_lib/lib/gcc) : 
+
+/usr/bin/ld: cannot find -lLibOpenHevcWrapper
+collect2: error: ld returned 1 exit status
+
+Source was: 
+#include <stdio.h>
+#include <openHevcWrapper.h>
+int main( void ) { libOpenHevcInit(1, 1); return 0; }
+
+
+*** CC/CXX Test Failed (args -I/usr/local/mpeg-dash/include -L/usr/local/mpeg-dash/lib -lfreetype -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c:1:22: fatal error: ft2build.h: No such file or directory
+ #include <ft2build.h>
+                      ^
+compilation terminated.
+
+Source was: 
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#include FT_GLYPH_H
+#include FT_OUTLINE_H
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs -lfreenect) : 
+
+/tmp/gpac-conf--10474-.c:1:37: fatal error: libfreenect/libfreenect.h: No such file or directory
+ #include <libfreenect/libfreenect.h>
+                                     ^
+compilation terminated.
+
+Source was: 
+#include <libfreenect/libfreenect.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/freenect -Lextra_lib/lib/gcc -lfreenect) : 
+
+/tmp/gpac-conf--10474-.c:1:37: fatal error: libfreenect/libfreenect.h: No such file or directory
+ #include <libfreenect/libfreenect.h>
+                                     ^
+compilation terminated.
+
+Source was: 
+#include <libfreenect/libfreenect.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c:1:27: fatal error: xmlrpc-c/base.h: No such file or directory
+ #include <xmlrpc-c/base.h>
+                           ^
+compilation terminated.
+
+Source was: 
+#include <xmlrpc-c/base.h>
+#include <xmlrpc-c/server.h>
+#include <xmlrpc-c/server_abyss.h>
+int main( void ) {
+return 0;
+}
+
+
+*** CC/CXX Test Failed (args -I/usr/include/directfb -L-ldirectfb -lfusion -ldirect -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c:1:22: fatal error: directfb.h: No such file or directory
+ #include <directfb.h>
+                      ^
+compilation terminated.
+
+Source was: 
+#include <directfb.h>
+int main( void ) { return 0; }
+
+
+*** CC/CXX Test Failed (args -I/usr/lib/xulrunner/sdk/include -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c: In function ‘main’:
+/tmp/gpac-conf--10474-.c:2:32: error: ‘TINYGL’ undeclared (first use in this function)
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                                ^
+/tmp/gpac-conf--10474-.c:2:32: note: each undeclared identifier is reported only once for each function it appears in
+/tmp/gpac-conf--10474-.c:2:24: warning: variable ‘a’ set but not used [-Wunused-but-set-variable]
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                        ^
+
+Source was: 
+#include <GL/gl.h>
+int main( void ) { int a ; a = TINYGL ; return 0;}
+
+
+*** CC/CXX Test Failed (args -I/home/arunakiran/git_comit/mpeg-dash/thirdparty_libraries/gpac/extra_lib/include/gecko-sdk/include -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c: In function ‘main’:
+/tmp/gpac-conf--10474-.c:2:32: error: ‘TINYGL’ undeclared (first use in this function)
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                                ^
+/tmp/gpac-conf--10474-.c:2:32: note: each undeclared identifier is reported only once for each function it appears in
+/tmp/gpac-conf--10474-.c:2:24: warning: variable ‘a’ set but not used [-Wunused-but-set-variable]
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                        ^
+
+Source was: 
+#include <GL/gl.h>
+int main( void ) { int a ; a = TINYGL ; return 0;}
+
+
+*** CC/CXX Test Failed (args -DNO_JS_RUNTIMETHREAD -DSPIDERMONKEY_NEW_API -I/usr/include/nspr -I/usr/include/js -lmozjs185 -lplds4 -lplc4 -lnspr4 -Wl,-rpath,/usr/local/mpeg-dash/lib/ -Wl,--warn-common -Wl,-z,defs) : 
+
+/tmp/gpac-conf--10474-.c: In function ‘main’:
+/tmp/gpac-conf--10474-.c:2:32: error: ‘TINYGL’ undeclared (first use in this function)
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                                ^
+/tmp/gpac-conf--10474-.c:2:32: note: each undeclared identifier is reported only once for each function it appears in
+/tmp/gpac-conf--10474-.c:2:24: warning: variable ‘a’ set but not used [-Wunused-but-set-variable]
+ int main( void ) { int a ; a = TINYGL ; return 0;}
+                        ^
+
+Source was: 
+#include <GL/gl.h>
+int main( void ) { int a ; a = TINYGL ; return 0;}
+
+
